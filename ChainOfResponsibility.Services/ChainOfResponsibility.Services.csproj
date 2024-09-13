@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66DEA7AE-4597-454D-B22D-B8D3C6CB3496}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChainOfResponsibility.Services</RootNamespace>
+    <AssemblyName>ChainOfResponsibility.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\AuthService.cs" />
+    <Compile Include="Authentication\Handlers\AccountStatusHandler.cs" />
+    <Compile Include="Authentication\Handlers\CredentialVerificationHandler.cs" />
+    <Compile Include="Authentication\Handlers\TwoFactorAuthenticationHandler.cs" />
+    <Compile Include="Email\EmailSender.cs" />
+    <Compile Include="Security\SecurityManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\SecurityException.cs" />
+    <Compile Include="Session\Session.cs" />
+    <Compile Include="Session\SessionException.cs" />
+    <Compile Include="Validator\Validator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChainOfResponsibility.BE\ChainOfResponsibility.BE.csproj">
+      <Project>{44C250C9-E3AA-4BE4-AAB9-2AFDF4EC0DD6}</Project>
+      <Name>ChainOfResponsibility.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChainOfResponsibility.Interfaces\ChainOfResponsibility.Interfaces.csproj">
+      <Project>{d38cefa5-aeaa-4f2c-848e-5cc157abf29f}</Project>
+      <Name>ChainOfResponsibility.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChainOfResponsibility.MPP\ChainOfResponsibility.MPP.csproj">
+      <Project>{66227977-41ee-4060-9cc9-c4edd7ba961c}</Project>
+      <Name>ChainOfResponsibility.MPP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
